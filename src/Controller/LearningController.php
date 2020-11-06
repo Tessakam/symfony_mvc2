@@ -8,18 +8,28 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LearningController extends AbstractController
 {
-    /**
-     * @Route("/learning", name="learning")
-     */
+
     public function index(): Response
     {
+        $name = new showMyName();
         return $this->render('learning/index.html.twig', [
             'controller_name' => 'LearningController',
-            'aboutMe' => $this->aboutMe(),
+            'name' => $name->getName(),
         ]);
     }
 
-    public function aboutMe(){
+    public function changeMyName()
+    {
+        $name = new showMyName();
+        return $this->render('learning/index.html.twig', [
+            'name' => $name->getName(),
+        ]);
+    }
+
+    public function aboutMe()
+    {
         return 'ome lorum ipsum tex';
     }
+
+
 }
